@@ -11,8 +11,8 @@
     <groupId>co.empresa</groupId>
     <artifactId>libro-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>producto-service</name>
-    <description>producto-service</description>
+    <name>libro-service</name>
+    <description>libro-service</description>
     <url/>
     <licenses>
         <license/>
