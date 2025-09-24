@@ -1,4 +1,4 @@
-package co.empresa.productoservice.domain.model;
+package co.empresa.libroservice.domain.model.entities;
 
 
 import jakarta.persistence.*;
@@ -10,7 +10,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Producto {
+public class Libro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

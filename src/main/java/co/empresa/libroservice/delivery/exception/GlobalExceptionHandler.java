@@ -1,8 +1,7 @@
-package co.empresa.productoservice.delivery.exception;
+package co.empresa.libroservice.delivery.exception;
 
 
-import co.empresa.productoservice.domain.exception.*;
-import co.empresa.productoservice.domain.model.Producto;
+import co.empresa.libroservice.domain.exception.*;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,12 +17,12 @@ public class GlobalExceptionHandler {
 
     private static final String ERROR = "error";
     private static final String MENSAJE = "mensaje";
-    private static final String PRODUCTO = "producto";
-    private static final String PRODUCTOS = "productos";
+    private static final String LIBRO = "libro";
+    private static final String LIBROS = "libros";
     private static final String STATUS = "status";
 
-    @ExceptionHandler(PaginaSinProductosException.class)
-    public ResponseEntity<Map<String, Object>> handlePaginaSinProductos(PaginaSinProductosException ex) {
+    @ExceptionHandler(PaginaSinLibrosException.class)
+    public ResponseEntity<Map<String, Object>> handlePaginaSinLibros(PaginaSinLibrosException ex) {
         Map<String, Object> response = new HashMap<>();
         response.put(MENSAJE, ex.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
@@ -36,24 +35,24 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
     }
 
-    @ExceptionHandler(NoHayProductosException.class)
-    public ResponseEntity<Map<String, Object>> handleNoHayProductos(NoHayProductosException ex) {
+    @ExceptionHandler(NoHayLibrosException.class)
+    public ResponseEntity<Map<String, Object>> handleNoHayLibros(NoHayLibrosException ex) {
         Map<String, Object> response = new HashMap<>();
-        response.put(MENSAJE, "No hay productos en la base de datos.");
-        response.put(PRODUCTOS, null); // para que sea siempre el mismo campo
+        response.put(MENSAJE, "No hay libros en la base de datos.");
+        response.put(LIBROS, null); // para que sea siempre el mismo campo
         return ResponseEntity.status(HttpStatus.OK).body(response); // 200 pero lista vacía
     }
 
-    @ExceptionHandler(ProductoNoEncontradoException.class)
-    public ResponseEntity<Map<String, Object>> handleProductoNoEncontrado(ProductoNoEncontradoException ex) {
+    @ExceptionHandler(LibroNoEncontradoException.class)
+    public ResponseEntity<Map<String, Object>> handleLibroNoEncontrado(LibroNoEncontradoException ex) {
         Map<String, Object> response = new HashMap<>();
         response.put(ERROR, ex.getMessage());
         response.put(STATUS, HttpStatus.NOT_FOUND.value());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
     }
 
-    @ExceptionHandler(ProductoExistenteException.class)
-    public ResponseEntity<Map<String, Object>> handleProductoExistente(ProductoExistenteException ex) {
+    @ExceptionHandler(LibroExistenteException.class)
+    public ResponseEntity<Map<String, Object>> handleLibroExistente(LibroExistenteException ex) {
         Map<String, Object> response = new HashMap<>();
         response.put(ERROR, ex.getMessage());
         response.put(STATUS, HttpStatus.BAD_REQUEST.value());

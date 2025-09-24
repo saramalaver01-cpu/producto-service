@@ -1,7 +1,7 @@
-package co.empresa.productoservice.domain.service;
+package co.empresa.libroservice.domain.service;
 
-import co.empresa.productoservice.domain.model.Producto;
-import co.empresa.productoservice.domain.repository.IProductoRepository;
+import co.empresa.libroservice.domain.model.entities.Libro;
+import co.empresa.libroservice.domain.repository.ILibroRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -14,48 +14,50 @@ import java.util.Optional;
  * Clase que implementa los métodos de la interfaz IProductoService
  * para realizar las operaciones de negocio sobre la entidad Producto
  */
+
+
 @Service
-public class ProductoServiceImpl implements IProductoService {
+public class LibroServiceImpl implements ILibroService {
 
-    IProductoRepository productoRepository;
+    ILibroRepository productoRepository;
 
-    public ProductoServiceImpl(IProductoRepository productoRepository) {
+    public LibroServiceImpl(ILibroRepository productoRepository) {
         this.productoRepository = productoRepository;
     }
 
     @Override
     @Transactional
-    public Producto save(Producto producto) {
+    public Libro save(Libro producto) {
         return productoRepository.save(producto);
     }
 
     @Override
     @Transactional
-    public void delete(Producto producto) {
+    public void delete(Libro producto) {
         productoRepository.delete(producto);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<Producto> findById(Long id) {
+    public Optional<Libro> findById(Long id) {
         return productoRepository.findById(id);
     }
 
     @Override
     @Transactional
-    public Producto update(Producto producto) {
+    public Libro update(Libro producto) {
         return productoRepository.save(producto);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public List<Producto> findAll() {
+    public List<Libro> findAll() {
         return productoRepository.findAll();
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Page<Producto> findAll(Pageable pageable) {
+    public Page<Libro> findAll(Pageable pageable) {
         return productoRepository.findAll(pageable);
     }
 }
