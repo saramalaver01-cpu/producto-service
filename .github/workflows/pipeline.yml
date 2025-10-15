@@ -1,4 +1,5 @@
 
+
 name: cicd spring boot app
 
 on:
@@ -20,8 +21,5 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '23'
-          cache: 'maven'
 
-      - name: Instalar las dependencias
-        run: mvn install -DskipTests
+
